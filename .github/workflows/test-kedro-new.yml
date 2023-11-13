@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9", "3.10"]
+        starter: [".", "https://github.com/rnoxy/kedro-starters"]
         directory: ["mini-poetry"]
 
     steps:
@@ -29,7 +30,7 @@ jobs:
 
       - name: Run kedro new
         run: |
-          kedro new --starter https://github.com/rnoxy/kedro-starters --directory ${{ matrix.directory }} --checkout ${GITHUB_REF#refs/heads/} --config tests/${{ matrix.directory }}/config.yml
+          kedro new --starter ${{ matrix.starter }} --directory ${{ matrix.directory }} --checkout ${GITHUB_REF#refs/heads/} --config tests/${{ matrix.directory }}/config.yml
 
       - name: Check that the project directory exists
         run: |
