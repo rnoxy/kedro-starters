@@ -28,7 +28,7 @@ jobs:
           pip install kedro
 
       - name: Run kedro new
-        run: kedro new --starter ${{ matrix.starter_name }} --config tests/${{ matrix.starter_name }}/config.yml --directory test-project-${{ matrix.starter_name }}
+        run: kedro new --starter ./${{ matrix.starter_name }} --config tests/${{ matrix.starter_name }}/config.yml --directory test-project-${{ matrix.starter_name }}
 
       - name: Check that the project was created
         run: |
