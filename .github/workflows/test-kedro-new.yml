@@ -28,13 +28,13 @@ jobs:
           pip install kedro
 
       - name: Run kedro new
-        run: kedro new --starter ./${{ matrix.starter_name }} --config tests/${{ matrix.starter_name }}/config.yml --directory test-project-${{ matrix.starter_name }}
+        run: kedro new --starter ${{ matrix.starter_name }} --config tests/${{ matrix.starter_name }}/config.yml
 
       - name: Check that the project was created
         run: |
-          "[ -d test-project-${{ matrix.starter_name }} ]"
-          "[ -f test-project-${{ matrix.starter_name }}/README.md ]"
-          "[ -f test-project-${{ matrix.starter_name }}/src/test_project_${{ matrix.starter_name }}/settings.py ]"
-          "[ -f test-project-${{ matrix.starter_name }}/src/test_project_${{ matrix.starter_name }}/pipeline_registry.py ]"
-          "[ -f test-project-${{ matrix.starter_name }}/src/test_project_${{ matrix.starter_name }}/__init__.py ]"
-          "[ -f test-project-${{ matrix.starter_name }}/src/test_project_${{ matrix.starter_name }}/__main__py ]"
+          "[ -d test-project ]"
+          "[ -f test-project/README.md ]"
+          "[ -f test-project/src/test_project_${{ matrix.starter_name }}/settings.py ]"
+          "[ -f test-project/src/test_project_${{ matrix.starter_name }}/pipeline_registry.py ]"
+          "[ -f test-project/src/test_project_${{ matrix.starter_name }}/__init__.py ]"
+          "[ -f test-project/src/test_project_${{ matrix.starter_name }}/__main__py ]"
