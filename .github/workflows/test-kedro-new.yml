@@ -29,7 +29,7 @@ jobs:
 
       - name: Run kedro new
         run: |
-          kedro new --starter ./${{ matrix.directory }} --config tests/${{ matrix.directory }}/config.yml
+          kedro new --starter https://github.com/rnoxy/kedro-starters --directory ${{ matrix.directory }} --checkout ${GITHUB_REF#refs/heads/} --config tests/${{ matrix.directory }}/config.yml
 
       - name: Check that the project directory exists
         run: |
