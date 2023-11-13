@@ -30,11 +30,24 @@ jobs:
       - name: Run kedro new
         run: kedro new --starter ${{ matrix.starter_name }} --config tests/${{ matrix.starter_name }}/config.yml
 
-      - name: Check that the project was created
+      - name: Check that the project directory exists
         run: |
-          "[ -d test-project ]"
-          "[ -f test-project/README.md ]"
-          "[ -f test-project/src/test_project/settings.py ]"
-          "[ -f test-project/src/test_project/pipeline_registry.py ]"
-          "[ -f test-project/src/test_project/__init__.py ]"
-          "[ -f test-project/src/test_project/__main__py ]"
+          if [ ! -d test-project ]; then
+            echo "test-project directory does not exist"
+            exit 1
+          fi
+
+      - name: Check that major project files exist
+        run: |
+          for file in \
+              README.md \
+              src/test_project/settings.py \
+              src/test_project/pipeline_registry.py \
+              src/test_project/__init__.py \
+              src/test_project/__main__.py;
+          do
+            if [ ! -f test-project/$file ]; then
+              echo "$file does not exist"
+              exit 1
+            fi
+          done
