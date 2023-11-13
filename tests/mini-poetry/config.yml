@@ -1,0 +1,6 @@
+# Here we can override the default config for the test project
+# by specifying the `project_name` parameter.
+
+# During the test we run
+# > kedro new --starter mini-poetry --config tests/mini-poetry/config.yml
+project_name: "test-project"
