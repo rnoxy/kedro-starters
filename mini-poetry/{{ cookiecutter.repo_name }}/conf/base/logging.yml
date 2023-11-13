@@ -32,10 +32,10 @@ handlers:
 
 loggers:
   kedro:
-    level: INFO
+    level: DEBUG
 
   {{ cookiecutter.python_package }}:
-    level: INFO
+    level: DEBUG
 
 root:
   handlers: [rich, info_file_handler]
