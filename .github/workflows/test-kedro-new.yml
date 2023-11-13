@@ -34,7 +34,7 @@ jobs:
         run: |
           "[ -d test-project ]"
           "[ -f test-project/README.md ]"
-          "[ -f test-project/src/test_project_${{ matrix.starter_name }}/settings.py ]"
-          "[ -f test-project/src/test_project_${{ matrix.starter_name }}/pipeline_registry.py ]"
-          "[ -f test-project/src/test_project_${{ matrix.starter_name }}/__init__.py ]"
-          "[ -f test-project/src/test_project_${{ matrix.starter_name }}/__main__py ]"
+          "[ -f test-project/src/test_project/settings.py ]"
+          "[ -f test-project/src/test_project/pipeline_registry.py ]"
+          "[ -f test-project/src/test_project/__init__.py ]"
+          "[ -f test-project/src/test_project/__main__py ]"
