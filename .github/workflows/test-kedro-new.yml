@@ -33,7 +33,7 @@ jobs:
           kedro new \
             --starter ${{ matrix.starter }} \
             --directory ${{ matrix.directory }} \
-            --checkout ${{ github.ref }} \
+            --checkout ${GITHUB_REF#refs/heads/} \
             --config tests/${{ matrix.directory }}/config.yml
 
       - name: Check that the project directory exists
