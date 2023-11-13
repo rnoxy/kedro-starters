@@ -1,0 +1,62 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api
+
+[tool.kedro]
+package_name = "{{ cookiecutter.python_package }}"
+project_name = "{{ cookiecutter.project_name }}"
+kedro_init_version = "{{ cookiecutter.kedro_version }}"
+
+[tool.poetry]
+name = "{{ cookiecutter.project_name }}"
+# Here you can change the config for project version
+version = "0.0.1" # remember to descritbe the changes in the CHANGELOG.md
+#description = "{{ cookiecutter.project_name }}"
+#authors = ["", ""]
+#license = "MIT"
+#readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+kedro = "^{{ cookiecutter.kedro_version }}"
+kedro-datasets = "^1.0.0"
+
+[tool.poetry.group.dev]
+optional = true
+[tool.poetry.group.dev.dependencies]
+black = "^22.0.0"
+flake8 = "^6.0.0"
+ipykernel = "^6.16.0"
+pre-commit = "^3.0.0"
+isort = "^5.10.1"
+jupyter = "^1.0.0"
+
+[tool.poetry.group.test]
+optional = true
+[tool.poetry.group.test.dependencies]
+pytest = "^7.1.3"
+pytest-cov = "^4.0.0"
+
+[tool.pytest.ini_options]
+addopts = """
+--cov-report term-missing \
+--cov src/{{ cookiecutter.python_package }} -ra"""
+
+[tool.coverage.report]
+fail_under = 0
+show_missing = true
+exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
+
+[tool.ruff]
+line-length = 88
+show-fixes = true
+select = [
+    "F",   # Pyflakes
+    "W",   # pycodestyle
+    "E",   # pycodestyle
+    "I",   # isort
+    "UP",  # pyupgrade
+    "PL",  # Pylint
+    "T201", # Print Statement
+]
+ignore = ["E501"]  # Black takes care of line-too-long
