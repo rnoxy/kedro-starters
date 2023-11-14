@@ -115,6 +115,8 @@ jobs:
 
       - name: Run kedro
         working-directory: test-project
+        env:
+          COLUMNS: 200
         run: kedro run --env=test
 
       - name: Run tests (pytest)

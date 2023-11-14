@@ -5,7 +5,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         [
             node(
                 func=lambda x: x,
-                inputs="raw_data",
+                inputs="test_data",
                 outputs="processed_data",
                 name="data_processing",
             )
