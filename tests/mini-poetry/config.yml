@@ -4,5 +4,5 @@
 # During the test we run
 # > kedro new --starter mini-poetry --config tests/mini-poetry/config.yml
 project_name: "test-project"
-project_description: "test-project-description"
-project_author_name: "test-project-author"
+project_description: "test-project description"
+project_author_name: "test-project author"
