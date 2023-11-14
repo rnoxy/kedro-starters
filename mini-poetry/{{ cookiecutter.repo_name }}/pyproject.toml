@@ -19,7 +19,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">=3.8.1"
 kedro = "^{{ cookiecutter.kedro_version }}"
-kedro-datasets = "^1.0.0"
+kedro-datasets = {version="^1.0.0", extras=["pandas.CSVDataset"]}
 
 [tool.poetry.group.dev]
 optional = true
