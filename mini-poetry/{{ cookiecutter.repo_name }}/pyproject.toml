@@ -10,7 +10,7 @@ kedro_init_version = "{{ cookiecutter.kedro_version }}"
 [tool.poetry]
 name = "{{ cookiecutter.project_name }}"
 # Here you can change the config for project version
-version = "0.0.1" # remember to descritbe the changes in the CHANGELOG.md
+version = "0.1.0" # remember to descritbe the changes in the CHANGELOG.md
 description = "{{ cookiecutter.project_description }}"
 authors = ["{{ cookiecutter.author_name }}"]
 license = "MIT"
