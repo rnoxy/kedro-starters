@@ -1,7 +1,7 @@
 {
     "project_name": "Mini Kedro with Poetry",
     "project_description": "A mini kedro project with poetry",
-    "project_author_name": "{{ cookiecutter.project_author_name }}",
+    "project_author_name": "Author Name",
     "repo_name": "{{ cookiecutter.project_name.strip().replace(' ', '-').replace('_', '-').lower() }}",
     "python_package": "{{ cookiecutter.project_name.strip().replace(' ', '_').replace('-', '_').lower() }}",
     "kedro_version": "{{ cookiecutter.kedro_version }}",
