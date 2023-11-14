@@ -42,7 +42,7 @@ jobs:
           kedro new                                            \
             --starter ${{ matrix.starter }}                    \
             --directory ${{ matrix.directory }}                \
-            --config tests/${{ matrix.directory }}/config.yml  \
+            --config ${{ matrix.directory }}/tests/config.yml  \
             --verbose
 
       - name: Run kedro new (remote)
@@ -52,7 +52,7 @@ jobs:
             --starter ${{ matrix.starter }}                    \
             --directory ${{ matrix.directory }}                \
             --checkout ${{ matrix.branch_name }}               \
-            --config tests/${{ matrix.directory }}/config.yml  \
+            --config ${{ matrix.directory }}/tests/config.yml  \
             --verbose
 
       - name: Check that the project directory exists
@@ -103,7 +103,7 @@ jobs:
           pip install kedro==${{ matrix.kedro-init-version }}
 
       - name: Init kedro project
-        run: kedro new --starter ./${{ matrix.directory }} --config tests/${{ matrix.directory }}/config.yml --verbose
+        run: kedro new --starter ./${{ matrix.directory }} --config ${{ matrix.directory }}/tests/config.yml --verbose
 
       - name: Install dependencies with poetry
         working-directory: test-project
