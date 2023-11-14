@@ -10,9 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10"]
-        starter: [".", "https://github.com/rnoxy/kedro-starters"]
         directory: ["mini-poetry"]
+        starter: [".", "https://github.com/rnoxy/kedro-starters"]
+        include:
+          - python-version: "3.9"
+          - kedro-version: "0.18.14"
+          - starter: "https://github.com/rnoxy/kedro-starters"
+            branch_name: ${GITHUB_REF#refs/heads/}
 
     steps:
       - name: Check out repository code
@@ -26,15 +30,25 @@ jobs:
       - name: Install kedro
         run: |
           python -m pip install --upgrade pip
-          pip install kedro
+          pip install kedro==${{ matrix.kedro-version }}
+
+      - name: Show kedro info
+        run: kedro info
 
       - name: Run kedro new
         run: |
-          kedro new \
-            --starter ${{ matrix.starter }} \
-            --directory ${{ matrix.directory }} \
-            --checkout ${GITHUB_REF#refs/heads/} \
-            --config tests/${{ matrix.directory }}/config.yml
+          if [ "${{ matrix.starter }}" == "." ]; then           \
+            kedro new                                           \
+              --starter ${{ matrix.starter }}                   \
+              --directory ${{ matrix.directory }}               \
+              --config tests/${{ matrix.directory }}/config.yml \
+          else                                                  \
+            kedro new                                           \
+              --starter ${{ matrix.starter }}                   \
+              --directory ${{ matrix.directory }}               \
+              --checkout ${{ matrix.branch_name }}              \
+              --config tests/${{ matrix.directory }}/config.yml \
+          fi
 
       - name: Check that the project directory exists
         run: |
