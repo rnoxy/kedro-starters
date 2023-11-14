@@ -41,7 +41,8 @@ jobs:
           kedro new                                           \
             --starter ${{ matrix.starter }}                   \
             --directory ${{ matrix.directory }}               \
-            --config tests/${{ matrix.directory }}/config.yml \
+            --config tests/${{ matrix.directory }}/config.yml
+
       - name: Run kedro new (remote)
         if: matrix.starter != "."
         run: |
@@ -49,8 +50,7 @@ jobs:
             --starter ${{ matrix.starter }}                   \
             --directory ${{ matrix.directory }}               \
             --checkout ${{ matrix.branch_name }}              \
-            --config tests/${{ matrix.directory }}/config.yml \
-          fi
+            --config tests/${{ matrix.directory }}/config.yml
 
       - name: Check that the project directory exists
         run: |
