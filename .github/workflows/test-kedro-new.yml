@@ -35,19 +35,21 @@ jobs:
       - name: Show kedro info
         run: kedro info
 
-      - name: Run kedro new
+      - name: Run kedro new (local)
+        if: matrix.starter == "."
         run: |
-          if [ "${{ matrix.starter }}" == "." ]; then           \
-            kedro new                                           \
-              --starter ${{ matrix.starter }}                   \
-              --directory ${{ matrix.directory }}               \
-              --config tests/${{ matrix.directory }}/config.yml \
-          else                                                  \
-            kedro new                                           \
-              --starter ${{ matrix.starter }}                   \
-              --directory ${{ matrix.directory }}               \
-              --checkout ${{ matrix.branch_name }}              \
-              --config tests/${{ matrix.directory }}/config.yml \
+          kedro new                                           \
+            --starter ${{ matrix.starter }}                   \
+            --directory ${{ matrix.directory }}               \
+            --config tests/${{ matrix.directory }}/config.yml \
+      - name: Run kedro new (remote)
+        if: matrix.starter != "."
+        run: |
+          kedro new                                           \
+            --starter ${{ matrix.starter }}                   \
+            --directory ${{ matrix.directory }}               \
+            --checkout ${{ matrix.branch_name }}              \
+            --config tests/${{ matrix.directory }}/config.yml \
           fi
 
       - name: Check that the project directory exists
