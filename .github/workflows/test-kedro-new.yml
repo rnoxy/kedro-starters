@@ -99,7 +99,7 @@ jobs:
           pip install kedro==${{ matrix.kedro-init-version }}
 
       - name: Init kedro project
-        run: kedro new --starter ./${{ matrix.directory }} --config tests/${{ matrix.directory }}/config.yml
+        run: kedro new --starter ./${{ matrix.directory }} --config tests/${{ matrix.directory }}/config.yml --verbose
 
       - name: Install dependencies with poetry
         working-directory: test-project
