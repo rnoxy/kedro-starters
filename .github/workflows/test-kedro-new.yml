@@ -73,3 +73,40 @@ jobs:
               exit 1
             fi
           done
+
+
+  test_project_build:
+    name: "Test project build"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        directory: ["mini-poetry"]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        kedro-init-version: ["0.18.14"]
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+           python-version: ${{ matrix.python-version }}
+
+      - name: Install kedro
+        run: |
+          python -m pip install --upgrade pip
+          pip install kedro==${{ matrix.kedro-init-version }}
+
+      - name: Init kedro project
+        run: kedro new --starter ./{{ matrix.directory }} --config tests/${{ matrix.directory }}/config.yml
+
+      - name: Change directory
+        run: cd test-project
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade poetry
+          poetry config virtualenvs.create false
+          poetry install
