@@ -112,3 +112,11 @@ jobs:
           python -m pip install --upgrade poetry
           poetry config virtualenvs.create false
           poetry install
+
+      - name: Run kedro
+        working-directory: test-project
+        run: kedro run --env=test
+
+      - name: Run tests (pytest)
+        working-directory: test-project
+        run: pytest
