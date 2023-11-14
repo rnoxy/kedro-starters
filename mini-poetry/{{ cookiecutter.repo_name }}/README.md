@@ -15,9 +15,26 @@ In order to get the best out of the template:
 * Don't commit data to your repository
 * Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
 
-## How to install dependencies
+## Conda environment
+In order to create a conda environment based on the `conda.yml` file, run:
+```bash
+conda env create -f conda.yml
+```
+Remember to activate the conda environment in which you installed your project package before running any commands.
 
-`poetry install`
+## How to install project package
+
+You can install your project package locally with:
+```bash
+poetry install
+```
+If you want to install your project package in editable mode, use:
+```bash
+poetry install --editable .
+```
+
+Remember that poetry will create a virtual environment for your project package, unless you are in a virtual environment already (see section about conda environment).
+
 
 ## How to run your Kedro pipeline
 
