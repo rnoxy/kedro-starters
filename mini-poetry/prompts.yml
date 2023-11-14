@@ -4,7 +4,29 @@ project_name:
   text: |
     Please enter a human readable name for your new project.
     Spaces, hyphens, and underscores are allowed.
+    You can edit it later in the `pyproject.toml` file.
   regex_validator: "^[\\w -]{2,}$"
   error_message: |
     It must contain only alphanumeric symbols, spaces, underscores and hyphens and
     be at least 2 characters long.
+
+project_description:
+  title: "Project Description"
+  text: |
+    Please enter a short description for your new project.
+    This will be used in the README.md file.
+    You can edit it later in the `pyproject.toml` file.
+  regex_validator: "^[\\w -]{2,}$"
+  error_message: |
+    It must contain only alphanumeric symbols, spaces, underscores and hyphens and
+    be at least 2 characters long.
+
+project_author_name:
+  title: "Project Author"
+  text: |
+    Please enter your name or the name of the project's author.
+    You can edit it later in the `pyproject.toml` file.
+  regex_validator: "^[\\w -]{2,}$"
+  error_message: |
+      It must contain only alphanumeric symbols, spaces, underscores and hyphens and
+      be at least 2 characters long.
