@@ -56,8 +56,7 @@ jobs:
         run: |
           if [ "${{ matrix.starter }}" == "." ]; then
             kedro new
-              --starter ${{ matrix.starter }}
-              --directory ${{ matrix.directory }}
+              --starter ${{ matrix.directory }}
               --config tests/${{ matrix.directory }}/config.yml
           else
             kedro new
