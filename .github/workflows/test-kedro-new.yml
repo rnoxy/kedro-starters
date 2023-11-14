@@ -9,6 +9,7 @@ jobs:
     name: "Test kedro new"
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         directory: ["mini-poetry"]
         starter: [".", "https://github.com/rnoxy/kedro-starters"]
@@ -81,6 +82,7 @@ jobs:
     name: "Test project build"
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         directory: ["mini-poetry"]
         python-version: ["3.8", "3.9", "3.10", "3.11"]
