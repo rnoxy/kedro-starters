@@ -44,4 +44,9 @@
 
 test_data:
   type: pandas.CSVDataset
-  filepath: data/01_raw/data-test.csv
+  filepath: data/01_raw/test-data.csv
+  load_args:
+      sep: ","
+      index_col: 0
+      parse_dates:
+        - date
