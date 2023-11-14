@@ -36,7 +36,7 @@ jobs:
         run: kedro info
 
       - name: Run kedro new (local)
-        if: matrix.starter == "."
+        if: matrix.starter == '.'
         run: |
           kedro new                                           \
             --starter ${{ matrix.starter }}                   \
@@ -44,7 +44,7 @@ jobs:
             --config tests/${{ matrix.directory }}/config.yml
 
       - name: Run kedro new (remote)
-        if: matrix.starter != "."
+        if: matrix.starter != '.'
         run: |
           kedro new                                           \
             --starter ${{ matrix.starter }}                   \
