@@ -99,7 +99,7 @@ jobs:
           pip install kedro==${{ matrix.kedro-init-version }}
 
       - name: Init kedro project
-        run: kedro new --starter {{ matrix.directory }} --config tests/${{ matrix.directory }}/config.yml
+        run: kedro new --starter ./${{ matrix.directory }} --config tests/${{ matrix.directory }}/config.yml
 
       - name: Change directory
         run: cd test-project
