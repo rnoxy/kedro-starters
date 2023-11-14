@@ -12,7 +12,7 @@ name = "{{ cookiecutter.project_name }}"
 # Here you can change the config for project version
 version = "0.1.0" # remember to descritbe the changes in the CHANGELOG.md
 description = "{{ cookiecutter.project_description }}"
-authors = ["{{ cookiecutter.author_name }}"]
+authors = ["{{ cookiecutter.project_author_name }}"]
 license = "MIT"
 readme = "README.md"
 
