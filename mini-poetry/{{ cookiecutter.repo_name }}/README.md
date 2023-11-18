@@ -22,6 +22,13 @@ conda env create -f conda.yml
 ```
 Remember to activate the conda environment in which you installed your project package before running any commands.
 
+### direnv integration
+If you have [direnv](https://direnv.net/) installed, you can automatically activate the conda environment when you `cd` into the project directory. 
+```bash
+# Please edit the .envrc file to fit your needs  (default conda hooks are loaded with zsh)
+direnv allow # allow the .envrc file
+```
+
 ## How to install project package
 
 You can install your project package locally with:
